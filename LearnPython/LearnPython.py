@@ -1,23 +1,32 @@
-import pygame, sys
+import pygame, sys, os
+import ball
 from pygame.locals import *
 
 pygame.init()
 
-DISPLAY = pygame.display.set_mode((200,200))
+window = pygame.display.set_mode((640,480))
+pygame.display.set_caption("Python Pong")
 
-FPS = pygame.time.Clock()
-FPS.tick(60)
+FPS = 30 
+Frame = pygame.time.Clock()
+
+b = ball.Ball()
+b._init_(320,0)
 
 #game loop
 while True:
+    window.fill(pygame.Color(0,0,0))
      #quit the game
     for e in pygame.event.get():
         if e.type == QUIT:
             pygame.quit()
-            sys.exit()
+            os._exit(1)
     #update
-    pygame.display.update()
+    b.update()
 
     #draw
-    c1 = pygame.Color(255,0,0)
-    pygame.draw.circle(DISPLAY, c1, (200,50), 30)
+    b.draw(window)
+
+
+    pygame.display.update()
+    Frame.tick(FPS)
