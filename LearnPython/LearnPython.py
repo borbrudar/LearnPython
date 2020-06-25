@@ -18,9 +18,11 @@ pad._init_(50,200)
 enemy = paddle.Paddle()
 enemy._init_(575,200)
 
-up,down = 0,0
+white = pygame.Color(255,255,255)
 
+up,down = 0,0
 score1,score2 = 0,0
+
 
 #game loop
 while True:
@@ -47,6 +49,14 @@ while True:
     #scores
     if(sc == 1) : score1 += 1
     elif(sc == 2): score2 += 1
+
+    #lines
+    i = 0
+    run = 1
+    while run:
+        pygame.draw.rect(window, white,pygame.Rect(315,i * ball.Ball.size,ball.Ball.size,ball.Ball.size))
+        i += 2
+        if i * ball.Ball.size > 480: run = 0
 
     #draw
     b.draw(window)

@@ -26,10 +26,9 @@ class Paddle:
 
     #enemy
     def update1(self, pos):
-        pos[1] += 5;
         #movement
-        if pos[1] > self.pos[1] : self.pos[1] += self.speed
-        elif pos[1] < self.pos[1] : self.pos[1] -= self.speed 
+        if pos[1] > (self.pos[1] + 30) : self.pos[1] += self.speed
+        elif pos[1] < (self.pos[1] + 30) : self.pos[1] -= self.speed 
         #border
         if(self.pos[1] < 0) : self.pos[1] = 0
         elif self.pos[1] > (480 - Paddle.size[1]): self.pos[1] = 480 - Paddle.size[1]
