@@ -25,6 +25,9 @@
     <Compile Include="ball.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="font.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="LearnPython.py" />
     <Compile Include="paddle.py">
       <SubType>Code</SubType>

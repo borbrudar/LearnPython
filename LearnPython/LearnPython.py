@@ -1,5 +1,6 @@
 import pygame, sys, os
 import ball, paddle
+import font
 from pygame.locals import *
 
 pygame.init()
@@ -14,8 +15,12 @@ b = ball.Ball()
 b._init_(320,0)
 pad = paddle.Paddle()
 pad._init_(50,200)
+enemy = paddle.Paddle()
+enemy._init_(575,200)
 
 up,down = 0,0
+
+score1,score2 = 0,0
 
 #game loop
 while True:
@@ -35,12 +40,22 @@ while True:
 
 
     #update
-    b.update(pad.box)
+    sc = b.update(pad.box, enemy.box)
     pad.update(up,down)
+    enemy.update1(b.box)
+
+    #scores
+    if(sc == 1) : score1 += 1
+    elif(sc == 2): score2 += 1
 
     #draw
     b.draw(window)
     pad.draw(window)
+    enemy.draw(window)
+
+    #scores draw
+    font.text_to_screen(window, '{0}'.format(score1), 160, 30)
+    font.text_to_screen(window, '{0}'.format(score2), 480, 30)
 
     pygame.display.update()
     Frame.tick(FPS)
